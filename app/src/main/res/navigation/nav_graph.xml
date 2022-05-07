@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment2"
         android:name="com.example.hw16_cities.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_selectedCitiesFragment"
+            app:destination="@id/selectedCitiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedCitiesFragment"
+        android:name="com.example.hw16_cities.SelectedCitiesFragment"
+        android:label="fragment_selected_cities"
+        tools:layout="@layout/fragment_selected_cities" />
 </navigation>
