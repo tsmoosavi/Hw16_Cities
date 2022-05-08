@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".view.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
  <androidx.recyclerview.widget.RecyclerView
@@ -16,11 +16,11 @@
      app:layout_constraintTop_toTopOf="parent"
      android:layout_marginTop="30dp"
      android:layout_marginBottom="40dp"
-     app:layout_constraintBottom_toTopOf="@id/showSelectedCities"
+     app:layout_constraintBottom_toTopOf="@id/showSelectedCitiesBtn"
      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     <Button
-        android:id="@+id/showSelectedCities"
+        android:id="@+id/showSelectedCitiesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_selected_cities"

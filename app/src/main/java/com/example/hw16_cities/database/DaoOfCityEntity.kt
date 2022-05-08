@@ -9,7 +9,7 @@ import com.example.hw16_cities.database.CityEntity
 interface DaoOfCityEntity {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addCity(city: City)
+    fun addCity(city: CityEntity)
 
     @Delete
     fun removeCity(city: CityEntity)

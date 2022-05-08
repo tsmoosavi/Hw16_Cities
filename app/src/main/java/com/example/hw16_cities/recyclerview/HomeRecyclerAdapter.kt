@@ -1,5 +1,7 @@
 package com.example.hw16_cities.recyclerview
 
+import android.app.Application
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw16_cities.City
+import com.example.hw16_cities.HomeViewModel
 import com.example.hw16_cities.R
 import com.example.hw16_cities.Repository
 import com.example.hw16_cities.databinding.HomerecyclerviewBinding
@@ -48,6 +51,6 @@ class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<Cit
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
 //        holder.bind(getItem(position),buttonClick)
         holder.binding.cityButton.text =getItem(position).name
-        buttonClick(holder.binding.cityButton, Repository().citiesList[position])
+        buttonClick(holder.binding.cityButton,Repository().citiesList[position])
     }
 }

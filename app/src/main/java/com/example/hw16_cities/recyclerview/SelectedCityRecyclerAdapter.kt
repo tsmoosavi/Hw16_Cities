@@ -38,6 +38,7 @@ class SelectedCityRecyclerAdapter : ListAdapter<CityEntity, SelectedCityRecycler
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        holder.binding.cityTv.text = getItem(position).cityName
     }
 
 }
