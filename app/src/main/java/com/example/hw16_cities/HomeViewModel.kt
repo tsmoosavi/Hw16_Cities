@@ -11,4 +11,7 @@ class HomeViewModel(app: Application): AndroidViewModel(app)  {
  init {
      repo.initDB(app.applicationContext)
  }
+    fun selectCity(city: City){
+        repo.addCity(city)
+    }
 }

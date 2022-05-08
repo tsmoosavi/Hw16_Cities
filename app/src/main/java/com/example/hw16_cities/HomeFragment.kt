@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
             city.isSelected = !city.isSelected
             if (city.isSelected){
                 Toast.makeText(activity, "selected", Toast.LENGTH_SHORT).show()
+                vm.selectCity(city)
                 button.setBackgroundColor(resources.getColor(R.color.green))
             }
             else if (!city.isSelected){

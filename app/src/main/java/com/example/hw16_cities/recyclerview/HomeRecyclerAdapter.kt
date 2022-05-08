@@ -1,16 +1,18 @@
-package com.example.hw16_cities
+package com.example.hw16_cities.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hw16_cities.City
+import com.example.hw16_cities.R
+import com.example.hw16_cities.Repository
 import com.example.hw16_cities.databinding.HomerecyclerviewBinding
 
-typealias buttonClickHandler = (Button,City) ->Unit
+typealias buttonClickHandler = (Button, City) ->Unit
 class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<City, HomeRecyclerAdapter.ItemHolder>(CityDiffCallback) {
 
     class ItemHolder(val binding: HomerecyclerviewBinding): RecyclerView.ViewHolder(binding.root){
@@ -46,6 +48,6 @@ class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<Cit
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
 //        holder.bind(getItem(position),buttonClick)
         holder.binding.cityButton.text =getItem(position).name
-        buttonClick(holder.binding.cityButton,Repository().citiesList[position])
+        buttonClick(holder.binding.cityButton, Repository().citiesList[position])
     }
 }
