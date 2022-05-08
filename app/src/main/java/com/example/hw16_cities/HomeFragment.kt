@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.hw16_cities.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
-lateinit var binding: FragmentHomeBinding
-
+    lateinit var binding: FragmentHomeBinding
+    val vm:HomeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -27,6 +28,8 @@ lateinit var binding: FragmentHomeBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var adapter = HomeRecyclerAdapter{button, city ->cityButtonClick(button,city)  }
+        binding.homeRV.adapter = adapter
+        adapter.submitList(vm.listOfCity)
 
     }
 
@@ -41,11 +44,12 @@ lateinit var binding: FragmentHomeBinding
             city.isSelected = !city.isSelected
             if (city.isSelected){
                 Toast.makeText(activity, "selected", Toast.LENGTH_SHORT).show()
-                button.setBackgroundResource(R.color.green)
+                button.setBackgroundColor(resources.getColor(R.color.green))
             }
             else if (!city.isSelected){
                 Toast.makeText(activity, "unselected", Toast.LENGTH_SHORT).show()
-                button.setBackgroundResource(R.color.orange)
+                button.setBackgroundColor(resources.getColor(R.color.orange))
+//                button.setBackgroundResource(R.color.orange)
             }
         }
 

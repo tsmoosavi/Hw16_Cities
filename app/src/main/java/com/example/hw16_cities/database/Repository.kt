@@ -14,6 +14,11 @@ class Repository {
     }
     var citiesList = listOf<City>(City("Esfehan"),City("Shiraz"),City("Tehran"),City("Mahalat"),City("Kashan"),
                                     City("qazvin"),City("Sari"),City("Bam"),City("Hamedan"),City("Rasht"))
+
+
+    fun addCity(city: City){
+        db!!.cityDao().addCity(city)
+    }
 }
 class City(var name:String){
     var isSelected = false

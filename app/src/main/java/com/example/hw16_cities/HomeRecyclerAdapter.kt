@@ -14,12 +14,12 @@ typealias buttonClickHandler = (Button,City) ->Unit
 class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<City, HomeRecyclerAdapter.ItemHolder>(CityDiffCallback) {
 
     class ItemHolder(val binding: HomerecyclerviewBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(city: City,buttonClick: buttonClickHandler){
-            binding.cityButton.text = city.name
-            binding.cityButton.setOnClickListener{
-                buttonClick.invoke(binding.cityButton,city)
-            }
-        }
+//        fun bind(city: City,buttonClick: buttonClickHandler){
+//            binding.cityButton.text = city.name
+//            binding.cityButton.setOnClickListener{
+//                buttonClick.invoke(binding.cityButton,city)
+//            }
+//        }
     }
     object CityDiffCallback: DiffUtil.ItemCallback<City>(){
 
@@ -44,6 +44,8 @@ class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<Cit
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.bind(getItem(position),buttonClick)
+//        holder.bind(getItem(position),buttonClick)
+        holder.binding.cityButton.text =getItem(position).name
+        buttonClick(holder.binding.cityButton,Repository().citiesList[position])
     }
 }
