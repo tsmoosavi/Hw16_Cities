@@ -12,15 +12,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hw16_cities.City
 import com.example.hw16_cities.HomeViewModel
+import com.example.hw16_cities.ListViewModel
 import com.example.hw16_cities.R
 import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.databinding.FragmentHomeBinding
 import com.example.hw16_cities.recyclerview.HomeRecyclerAdapter
 
-var selectedCityList = arrayListOf<String>()
+
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     val vm: HomeViewModel by activityViewModels()
+    val vM:ListViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -45,12 +47,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun cityButtonClick(button: Button, city: City) {
-            for(theCity in selectedCityList){
-                if (selectedCityList.contains(button.text)){
-                    button.text= "hi${city.name}"
+            for(theCity in vm.selectedCityList){
+                if (vm.selectedCityList.contains(city)){
+//                button.text= "hi${city.name}"
                     button.setBackgroundColor(resources.getColor(R.color.green))
                 }else{
-                    button.text= "good${city.name}"
+//                    button.text= "good${city.name}"
                     button.setBackgroundColor(resources.getColor(R.color.orange))
                 }
             }
@@ -71,14 +73,15 @@ class HomeFragment : Fragment() {
             city.isSelected = !city.isSelected
             if (city.isSelected){
                 Toast.makeText(activity, "selected", Toast.LENGTH_SHORT).show()
-                selectedCityList.add(city.name)
+                vm.selectedCityList.add(city)
 //                button.text= "hi"
                 vm.selectCity(CityEntity(0,city.name))
                 button.setBackgroundColor(resources.getColor(R.color.green))
             }
             else if (!city.isSelected){
+                vm.delete(city.name)
                 Toast.makeText(activity, "unselected", Toast.LENGTH_SHORT).show()
-                selectedCityList.remove(city.name)
+                vm.selectedCityList.remove(city)
 //                button.text= "goodbye"
                 button.setBackgroundColor(resources.getColor(R.color.orange))
             }

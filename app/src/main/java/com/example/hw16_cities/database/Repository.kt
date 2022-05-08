@@ -24,6 +24,9 @@ class Repository {
     fun getList(): LiveData<List<CityEntity>>{
         return db!!.cityDao().getList()
     }
+    fun delete(city: String){
+        db!!.cityDao().deleteItem (city)
+    }
 }
 class City(var name:String){
     var isSelected = false

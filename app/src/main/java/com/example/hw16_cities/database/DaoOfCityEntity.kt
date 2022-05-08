@@ -16,6 +16,8 @@ interface DaoOfCityEntity {
 
     @Query("Select * From CityEntity")
     fun getList(): LiveData<List<CityEntity>>
+    @Query("Delete from CityEntity Where cityName = :city")
+        fun deleteItem (city:String)
 
 
 }
