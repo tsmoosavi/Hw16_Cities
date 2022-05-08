@@ -1,4 +1,4 @@
-package com.example.hw16_cities
+package com.example.hw16_cities.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,6 +1,8 @@
 package com.example.hw16_cities
 
 import android.content.Context
+import com.example.hw16_cities.database.CityDatabase
+import com.example.hw16_cities.database.DaoOfCityEntity
 
 class Repository {
 
