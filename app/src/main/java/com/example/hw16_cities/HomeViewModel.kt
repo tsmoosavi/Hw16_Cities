@@ -8,15 +8,21 @@ import com.example.hw16_cities.database.CityEntity
 class HomeViewModel(app: Application): AndroidViewModel(app)  {
     var citiesListLD : LiveData<List<CityEntity>>
     var repo = Repository()
- init {
+    init {
         repo.initDB(app.applicationContext)
      citiesListLD = repo.getList()
 
- }
+    }
 //    fun selectCity(city: CityEntity){
 //        repo.addCity(city)
 //    }
 //    fun delete(city: String){
 //        repo.delete(city)
 //    }
+    fun getSelectedCityList(selection:Boolean): LiveData<List<CityEntity>> {
+    return repo.getSelectedCitiesList(selection)
+    }
+    fun update(city: CityEntity){
+        repo.update(city)
+    }
 }

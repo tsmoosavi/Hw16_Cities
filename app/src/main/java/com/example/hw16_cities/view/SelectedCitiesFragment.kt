@@ -13,7 +13,7 @@ import com.example.hw16_cities.recyclerview.SelectedCityRecyclerAdapter
 
 class SelectedCitiesFragment : Fragment() {
     lateinit var binding: FragmentSelectedCitiesBinding
-//    val vm: HomeViewModel by activityViewModels()
+    val vm: HomeViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

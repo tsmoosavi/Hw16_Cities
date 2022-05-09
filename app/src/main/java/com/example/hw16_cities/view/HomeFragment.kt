@@ -64,6 +64,7 @@ class HomeFragment : Fragment() {
         }
         button.setOnClickListener {
             city.isSelected = !city.isSelected
+            vm.update(city)
             if (city.isSelected){
                 Toast.makeText(activity, "selected", Toast.LENGTH_SHORT).show()
 //                vm.selectCity(CityEntity(0,city.name))

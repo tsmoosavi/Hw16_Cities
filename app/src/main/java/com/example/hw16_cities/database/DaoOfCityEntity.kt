@@ -31,6 +31,9 @@ interface DaoOfCityEntity {
     @Query("SELECT  count(id) FROM CityEntity")
     fun getICityNumber():Int
 
+    @Update
+    fun edit(city: CityEntity)
+
 //    @Query("DELETE FROM CityEntity")
 //    fun delete()
 

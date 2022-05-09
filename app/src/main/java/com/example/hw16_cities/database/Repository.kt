@@ -50,5 +50,8 @@ class Repository {
     fun getSelectedCitiesList(selection:Boolean): LiveData<List<CityEntity>>{
         return db!!.cityDao().getSelectedCityList(selection)
     }
+    fun update(city: CityEntity){
+        db!!.cityDao().edit(city)
+    }
 }
 
