@@ -2,6 +2,7 @@ package com.example.hw16_cities.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +11,8 @@ import com.example.hw16_cities.R
 import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.databinding.SelectedcityrecyclerviewBinding
 
-class SelectedCityRecyclerAdapter : ListAdapter<CityEntity, SelectedCityRecyclerAdapter.ItemHolder>(CityDiffCallback) {
+typealias buttonClick = (TextView, CityEntity) ->Unit
+class SelectedCityRecyclerAdapter(var buttonClickHandler: buttonClick) : ListAdapter<CityEntity, SelectedCityRecyclerAdapter.ItemHolder>(CityDiffCallback) {
 
     class ItemHolder(val binding: SelectedcityrecyclerviewBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -39,6 +41,7 @@ class SelectedCityRecyclerAdapter : ListAdapter<CityEntity, SelectedCityRecycler
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         holder.binding.cityTv.text = getItem(position).cityName
+        buttonClickHandler(holder.binding.cityTv,getItem(position))
     }
 
 }

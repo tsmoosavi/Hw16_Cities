@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.example.hw16_cities.HomeViewModel
+import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.databinding.FragmentSelectedCitiesBinding
 import com.example.hw16_cities.recyclerview.SelectedCityRecyclerAdapter
 
@@ -30,15 +32,22 @@ class SelectedCitiesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var adapter = SelectedCityRecyclerAdapter()
+        var adapter = SelectedCityRecyclerAdapter{textView, city -> textViewClick(textView,city)}
         binding.selectedRecyclerView.adapter = adapter
 
-//        vm.citiesListLD.observe(viewLifecycleOwner){
-//            if (it != null){
-//                var adapter = SelectedCityRecyclerAdapter()
-//                binding.selectedRecyclerView.adapter = adapter
-//                adapter.submitList(it)
-//            }
-//        }
+        vm.selectedCitiesListLD.observe(viewLifecycleOwner){
+            if (it != null){
+                var adapter = SelectedCityRecyclerAdapter{textView, city -> textViewClick(textView,city)}
+                binding.selectedRecyclerView.adapter = adapter
+                adapter.submitList(it)
+            }
+        }
+    }
+
+    private fun textViewClick(textView:TextView,city:CityEntity ) {
+       textView.setOnClickListener {
+           city.isSelected = !city.isSelected
+           vm.update(city)
+       }
     }
 }

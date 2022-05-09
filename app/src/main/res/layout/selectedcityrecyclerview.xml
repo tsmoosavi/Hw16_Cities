@@ -15,7 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/purple_200"/>
+            android:background="#FFEB3B"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 </layout>
