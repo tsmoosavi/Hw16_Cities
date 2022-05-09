@@ -6,5 +6,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class CityEntity (
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val  cityName : String
+    val  cityName : String,
+    var isSelected:Boolean
         )

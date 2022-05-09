@@ -1,7 +1,6 @@
 package com.example.hw16_cities.recyclerview
 
-import android.app.Application
-import android.content.Context
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
@@ -10,26 +9,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw16_cities.*
+import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.databinding.HomerecyclerviewBinding
 
-typealias buttonClickHandler = (Button, City) ->Unit
-class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<City, HomeRecyclerAdapter.ItemHolder>(CityDiffCallback) {
+typealias buttonClickHandler = (Button, CityEntity) ->Unit
+class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<CityEntity, HomeRecyclerAdapter.ItemHolder>(CityDiffCallback) {
 
     class ItemHolder(val binding: HomerecyclerviewBinding): RecyclerView.ViewHolder(binding.root){
-//        fun bind(city: City,buttonClick: buttonClickHandler){
-//            binding.cityButton.text = city.name
+//        fun bind(city: CityEntity,buttonClick: buttonClickHandler){
+//            binding.cityButton.text = city.cityName
 //            binding.cityButton.setOnClickListener{
 //                buttonClick.invoke(binding.cityButton,city)
 //            }
 //        }
     }
-    object CityDiffCallback: DiffUtil.ItemCallback<City>(){
+    object CityDiffCallback: DiffUtil.ItemCallback<CityEntity>(){
 
-        override fun areItemsTheSame(oldItem:City, newItem: City): Boolean {
+        override fun areItemsTheSame(oldItem:CityEntity, newItem: CityEntity): Boolean {
             return oldItem == newItem
         }
-        override fun areContentsTheSame(oldItem: City, newItem: City): Boolean {
-            return oldItem.name == newItem.name
+        override fun areContentsTheSame(oldItem: CityEntity, newItem: CityEntity): Boolean {
+            return oldItem.cityName == newItem.cityName
         }
     }
 
@@ -47,7 +47,7 @@ class HomeRecyclerAdapter(var buttonClick: buttonClickHandler) : ListAdapter<Cit
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
 //        holder.bind(getItem(position),buttonClick)
-        holder.binding.cityButton.text =getItem(position).name
-        buttonClick(holder.binding.cityButton,ListViewModel().x[position])
+        holder.binding.cityButton.text = getItem(position).cityName
+        buttonClick(holder.binding.cityButton,getItem(position))
     }
 }

@@ -13,11 +13,28 @@ class Repository {
     fun initDB(context: Context){
         db = CityDatabase.getDatabase(context)
         cityDao = db?.cityDao()
+
+        if(getSizeList() == 0){
+            addTenCity()
+        }
+
     }
-    var citiesList = listOf(City("Esfehan"),City("Shiraz"),City("Tehran"),City("Mahalat"),City("Kashan"),
-                                    City("qazvin"),City("Sari"),City("Bam"),City("Hamedan"),City("Rasht"))
+
+    private fun addTenCity() {
+        cityDao?.insertAll(CityEntity(0,"Esfehan",false), CityEntity(0,"Shiraz",false),
+                           CityEntity(0,"Tehran",false), CityEntity(0,"Mahalat",false),
+                           CityEntity(0,"Kashan",false), CityEntity(0,"qazvin",false),
+                           CityEntity(0,"Sari",false), CityEntity(0,"Bam",false),
+                           CityEntity(0,"Hamedan",false), CityEntity(0,"Rasht",false))
+    }
 
 
+    fun getSizeList():Int{
+        return db!!.cityDao().getICityNumber()
+    }
+    fun getCity(id:Int):CityEntity{
+        return db!!.cityDao().getCity(id)
+    }
     fun addCity(city: CityEntity){
         db!!.cityDao().addCity(city)
     }
@@ -27,7 +44,11 @@ class Repository {
     fun delete(city: String){
         db!!.cityDao().deleteItem (city)
     }
+//    fun deleteAllItems(){
+//        db!!.cityDao().delete()
+//    }
+    fun getSelectedCitiesList(selection:Boolean): LiveData<List<CityEntity>>{
+        return db!!.cityDao().getSelectedCityList(selection)
+    }
 }
-class City(var name:String){
-    var isSelected = false
-}
+
