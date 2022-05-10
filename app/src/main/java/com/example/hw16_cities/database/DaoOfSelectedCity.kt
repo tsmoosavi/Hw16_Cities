@@ -8,9 +8,6 @@ interface  DaoOfSelectedCity {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addCity(city: SelectedCityEntity)
 
-//    @Delete
-//    fun removeCity(city: String)
-
     @Query("Delete from SelectedCityEntity Where cityName = :city")
     fun deleteItem (city:String)
 

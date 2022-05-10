@@ -44,9 +44,6 @@ class Repository {
     fun delete(city: String){
         db!!.selectedCityDao().deleteItem (city)
     }
-//    fun deleteAllItems(){
-//        db!!.cityDao().delete()
-//    }
 //    fun getSelectedCitiesList(selection:Boolean): LiveData<List<CityEntity>>{
 //        return db!!.cityDao().getSelectedCityList(selection)
 //    }

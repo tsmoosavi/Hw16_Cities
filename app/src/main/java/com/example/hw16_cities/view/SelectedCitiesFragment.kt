@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hw16_cities.HomeViewModel
-import com.example.hw16_cities.SwipeToDeleteCallback
-import com.example.hw16_cities.database.CityEntity
-import com.example.hw16_cities.database.SelectedCityEntity
+import com.example.hw16_cities.ViewModel.HomeViewModel
+import com.example.hw16_cities.recyclerview.SwipeToDeleteCallback
 import com.example.hw16_cities.databinding.FragmentSelectedCitiesBinding
 import com.example.hw16_cities.recyclerview.SelectedCityRecyclerAdapter
 
@@ -37,7 +34,6 @@ class SelectedCitiesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var adapter = SelectedCityRecyclerAdapter()
-        //{textView, city -> textViewClick(textView,city)}
         binding.selectedRecyclerView.adapter = adapter
 
         vm.selectedCitiesListLD.observe(viewLifecycleOwner){
@@ -46,8 +42,6 @@ class SelectedCitiesFragment : Fragment() {
                 val swipeToDeleteCallback = object : SwipeToDeleteCallback() {
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                         val pos = viewHolder.adapterPosition
-//                        var modelList = it
-//                        it[pos].isSelected  =  !it[pos].isSelected
                         var city = vm.getCity(it[pos].cityName)
                         city.isSelected = !city.isSelected
                         vm.update(city)
@@ -63,11 +57,4 @@ class SelectedCitiesFragment : Fragment() {
         }
     }
 
-//    private fun textViewClick(textView:TextView,city:SelectedCityEntity ) {
-//       textView.setOnClickListener {
-//           city.isSelected = !city.isSelected
-//           vm.update(city)
-//       }
-
-//    }
 }

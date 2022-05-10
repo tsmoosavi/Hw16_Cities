@@ -1,6 +1,5 @@
 package com.example.hw16_cities.view
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.hw16_cities.HomeViewModel
+import com.example.hw16_cities.ViewModel.HomeViewModel
 import com.example.hw16_cities.R
 import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.database.SelectedCityEntity
@@ -68,12 +67,10 @@ class HomeFragment : Fragment() {
             vm.update(city)
             if (city.isSelected){
                 Toast.makeText(activity, "selected", Toast.LENGTH_SHORT).show()
-//                vm.selectCity(CityEntity(0,city.name))
                 vm.addCity(SelectedCityEntity(0,city.cityName,city.isSelected))
                 button.setBackgroundColor(resources.getColor(R.color.green))
             }
             else if (!city.isSelected){
-//                vm.delete(city.name)
                 vm.delete(city.cityName)
                 Toast.makeText(activity, "unselected", Toast.LENGTH_SHORT).show()
                 button.setBackgroundColor(resources.getColor(R.color.orange))

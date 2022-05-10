@@ -1,8 +1,9 @@
-package com.example.hw16_cities
+package com.example.hw16_cities.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.example.hw16_cities.Repository
 import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.database.SelectedCityEntity
 
@@ -17,9 +18,6 @@ class HomeViewModel(app: Application): AndroidViewModel(app)  {
 
 
     }
-//    fun selectCity(city: CityEntity){
-//        repo.addCity(city)
-//    }
     fun delete(city: String){
         repo.delete(city)
     }

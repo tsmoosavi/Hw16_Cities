@@ -1,4 +1,4 @@
-package com.example.hw16_cities
+package com.example.hw16_cities.recyclerview
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView

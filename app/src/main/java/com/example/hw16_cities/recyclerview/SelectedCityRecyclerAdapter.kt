@@ -12,9 +12,8 @@ import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.database.SelectedCityEntity
 import com.example.hw16_cities.databinding.SelectedcityrecyclerviewBinding
 
-//typealias buttonClick = (TextView, SelectedCityEntity) ->Unit
 class SelectedCityRecyclerAdapter : ListAdapter<SelectedCityEntity, SelectedCityRecyclerAdapter.ItemHolder>(CityDiffCallback) {
-//(var buttonClickHandler: buttonClick)
+
     class ItemHolder(val binding: SelectedcityrecyclerviewBinding): RecyclerView.ViewHolder(binding.root){
 
     }
@@ -42,7 +41,6 @@ class SelectedCityRecyclerAdapter : ListAdapter<SelectedCityEntity, SelectedCity
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         holder.binding.cityTv.text = getItem(position).cityName
-//        buttonClickHandler(holder.binding.cityTv,getItem(position))
     }
 
 }
