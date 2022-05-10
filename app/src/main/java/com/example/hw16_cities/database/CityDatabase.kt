@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CityEntity::class],version = 1)
+@Database(entities = [CityEntity::class, SelectedCityEntity::class],version = 1)
 abstract class CityDatabase:RoomDatabase() {
     abstract fun cityDao(): DaoOfCityEntity
+    abstract fun selectedCityDao(): DaoOfSelectedCity
     companion object{
     var     INSTANCE: CityDatabase? = null
         fun getDatabase(context: Context): CityDatabase?{

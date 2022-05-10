@@ -2,17 +2,17 @@ package com.example.hw16_cities
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import com.example.hw16_cities.database.CityDatabase
-import com.example.hw16_cities.database.CityEntity
-import com.example.hw16_cities.database.DaoOfCityEntity
+import com.example.hw16_cities.database.*
 
 class Repository {
 
     var db: CityDatabase? = null
     var cityDao: DaoOfCityEntity? = null
+    var selectedCityDoa:DaoOfSelectedCity? = null
     fun initDB(context: Context){
         db = CityDatabase.getDatabase(context)
         cityDao = db?.cityDao()
+        selectedCityDoa = db?.selectedCityDao()
 
         if(getSizeList() == 0){
             addTenCity()
@@ -35,21 +35,25 @@ class Repository {
     fun getCity(name: String):CityEntity{
         return db!!.cityDao().getCity(name)
     }
-    fun addCity(city: CityEntity){
-        db!!.cityDao().addCity(city)
+    fun addCity(city: SelectedCityEntity){
+        db!!.selectedCityDao().addCity(city)
     }
     fun getList(): LiveData<List<CityEntity>>{
         return db!!.cityDao().getList()
     }
     fun delete(city: String){
-        db!!.cityDao().deleteItem (city)
+        db!!.selectedCityDao().deleteItem (city)
     }
 //    fun deleteAllItems(){
 //        db!!.cityDao().delete()
 //    }
-    fun getSelectedCitiesList(selection:Boolean): LiveData<List<CityEntity>>{
-        return db!!.cityDao().getSelectedCityList(selection)
+//    fun getSelectedCitiesList(selection:Boolean): LiveData<List<CityEntity>>{
+//        return db!!.cityDao().getSelectedCityList(selection)
+//    }
+    fun getSelectedCitiesList(): LiveData<List<SelectedCityEntity>>{
+        return db!!.selectedCityDao().getList()
     }
+
     fun update(city: CityEntity){
         db!!.cityDao().edit(city)
     }

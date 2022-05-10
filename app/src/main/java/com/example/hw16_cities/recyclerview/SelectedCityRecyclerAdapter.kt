@@ -9,20 +9,21 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw16_cities.R
 import com.example.hw16_cities.database.CityEntity
+import com.example.hw16_cities.database.SelectedCityEntity
 import com.example.hw16_cities.databinding.SelectedcityrecyclerviewBinding
 
-typealias buttonClick = (TextView, CityEntity) ->Unit
-class SelectedCityRecyclerAdapter (var buttonClickHandler: buttonClick): ListAdapter<CityEntity, SelectedCityRecyclerAdapter.ItemHolder>(CityDiffCallback) {
-
+//typealias buttonClick = (TextView, SelectedCityEntity) ->Unit
+class SelectedCityRecyclerAdapter : ListAdapter<SelectedCityEntity, SelectedCityRecyclerAdapter.ItemHolder>(CityDiffCallback) {
+//(var buttonClickHandler: buttonClick)
     class ItemHolder(val binding: SelectedcityrecyclerviewBinding): RecyclerView.ViewHolder(binding.root){
 
     }
-    object CityDiffCallback: DiffUtil.ItemCallback<CityEntity>(){
+    object CityDiffCallback: DiffUtil.ItemCallback<SelectedCityEntity>(){
 
-        override fun areItemsTheSame(oldItem: CityEntity, newItem: CityEntity): Boolean {
+        override fun areItemsTheSame(oldItem: SelectedCityEntity, newItem: SelectedCityEntity): Boolean {
             return oldItem == newItem
         }
-        override fun areContentsTheSame(oldItem: CityEntity, newItem: CityEntity): Boolean {
+        override fun areContentsTheSame(oldItem: SelectedCityEntity, newItem: SelectedCityEntity): Boolean {
             return oldItem == newItem
         }
     }
@@ -41,7 +42,7 @@ class SelectedCityRecyclerAdapter (var buttonClickHandler: buttonClick): ListAda
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         holder.binding.cityTv.text = getItem(position).cityName
-        buttonClickHandler(holder.binding.cityTv,getItem(position))
+//        buttonClickHandler(holder.binding.cityTv,getItem(position))
     }
 
 }

@@ -7,8 +7,8 @@ import androidx.room.*
 @Dao
 interface DaoOfCityEntity {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addCity(city: CityEntity)
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun addCity(city: CityEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg questions: CityEntity)
@@ -24,11 +24,11 @@ interface DaoOfCityEntity {
     @Query("Select * From CityEntity")
     fun getList(): LiveData<List<CityEntity>>
 
-    @Query("Delete from CityEntity Where cityName = :city")
-    fun deleteItem (city:String)
+//    @Query("Delete from CityEntity Where cityName = :city")
+//    fun deleteItem (city:String)
 
-    @Query("select * from CityEntity where isSelected = :selection")
-    fun getSelectedCityList(selection:Boolean): LiveData<List<CityEntity>>
+//    @Query("select * from CityEntity where isSelected = :selection")
+//    fun getSelectedCityList(selection:Boolean): LiveData<List<CityEntity>>
 
     @Query("SELECT  count(id) FROM CityEntity")
     fun getICityNumber():Int

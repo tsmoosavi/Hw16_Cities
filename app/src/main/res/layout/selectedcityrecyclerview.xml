@@ -3,7 +3,7 @@
     <data>
         <variable
             name="city"
-            type="com.example.hw16_cities.database.CityEntity" />
+            type="com.example.hw16_cities.database.SelectedCityEntity" />
 
     </data>
     <LinearLayout
