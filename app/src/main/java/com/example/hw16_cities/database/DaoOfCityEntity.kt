@@ -13,8 +13,10 @@ interface DaoOfCityEntity {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg questions: CityEntity)
 
-    @Query("Select * from CityEntity where id = :id")
-    fun getCity(id:Int):CityEntity
+//    @Query("Select * from CityEntity where id = :id")
+//    fun getCity(id:Int):CityEntity
+    @Query("Select * from CityEntity where cityName = :name")
+    fun getCity(name:String):CityEntity
 
 //    @Delete
 //    fun removeCity(city: CityEntity)

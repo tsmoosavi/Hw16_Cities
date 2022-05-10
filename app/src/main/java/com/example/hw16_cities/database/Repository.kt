@@ -32,8 +32,8 @@ class Repository {
     fun getSizeList():Int{
         return db!!.cityDao().getICityNumber()
     }
-    fun getCity(id:Int):CityEntity{
-        return db!!.cityDao().getCity(id)
+    fun getCity(name: String):CityEntity{
+        return db!!.cityDao().getCity(name)
     }
     fun addCity(city: CityEntity){
         db!!.cityDao().addCity(city)

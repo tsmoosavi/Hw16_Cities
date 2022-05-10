@@ -28,4 +28,7 @@ class HomeViewModel(app: Application): AndroidViewModel(app)  {
     fun update(city: CityEntity){
         repo.update(city)
     }
+    fun getCity(name:String):CityEntity{
+        return repo.getCity(name)
+    }
 }

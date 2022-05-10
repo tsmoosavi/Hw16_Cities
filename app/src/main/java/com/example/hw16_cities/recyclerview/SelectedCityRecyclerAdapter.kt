@@ -12,7 +12,7 @@ import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.databinding.SelectedcityrecyclerviewBinding
 
 typealias buttonClick = (TextView, CityEntity) ->Unit
-class SelectedCityRecyclerAdapter(var buttonClickHandler: buttonClick) : ListAdapter<CityEntity, SelectedCityRecyclerAdapter.ItemHolder>(CityDiffCallback) {
+class SelectedCityRecyclerAdapter (var buttonClickHandler: buttonClick): ListAdapter<CityEntity, SelectedCityRecyclerAdapter.ItemHolder>(CityDiffCallback) {
 
     class ItemHolder(val binding: SelectedcityrecyclerviewBinding): RecyclerView.ViewHolder(binding.root){
 
