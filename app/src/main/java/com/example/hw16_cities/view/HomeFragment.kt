@@ -1,16 +1,18 @@
 package com.example.hw16_cities.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.hw16_cities.ViewModel.HomeViewModel
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hw16_cities.R
+import com.example.hw16_cities.ViewModel.HomeViewModel
 import com.example.hw16_cities.database.CityEntity
 import com.example.hw16_cities.database.SelectedCityEntity
 import com.example.hw16_cities.databinding.FragmentHomeBinding
@@ -36,6 +38,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var adapter = HomeRecyclerAdapter{button, city ->cityButtonClick(button,city)  }
         binding.homeRV.adapter = adapter
+
+//        binding.homeRV.layoutManager = GridLayoutManager(context,2)
+
+
+
         initView()
     }
 
