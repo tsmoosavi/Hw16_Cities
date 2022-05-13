@@ -14,7 +14,8 @@
         android:id="@+id/cityButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/orange"/>
+        android:backgroundTint="@color/orange"
+        />
 
 </LinearLayout>
 </layout>
