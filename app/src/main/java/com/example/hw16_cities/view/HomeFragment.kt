@@ -1,5 +1,6 @@
 package com.example.hw16_cities.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw16_cities.R
 import com.example.hw16_cities.ViewModel.HomeViewModel
@@ -40,7 +42,12 @@ class HomeFragment : Fragment() {
         binding.homeRV.adapter = adapter
 
 //        binding.homeRV.layoutManager = GridLayoutManager(context,2)
-
+        var orin = resources.configuration.orientation
+        if(orin == Configuration.ORIENTATION_LANDSCAPE){
+            binding.homeRV.layoutManager = GridLayoutManager(context,2)
+        }else{
+            binding.homeRV.layoutManager = LinearLayoutManager(context)
+        }
 
 
         initView()

@@ -1,12 +1,15 @@
 package com.example.hw16_cities.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw16_cities.ViewModel.HomeViewModel
 import com.example.hw16_cities.recyclerview.SwipeToDeleteCallback
@@ -35,6 +38,12 @@ class SelectedCitiesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var adapter = SelectedCityRecyclerAdapter()
         binding.selectedRecyclerView.adapter = adapter
+        var orin = resources.configuration.orientation
+        if(orin == Configuration.ORIENTATION_LANDSCAPE){
+            binding.selectedRecyclerView.layoutManager = GridLayoutManager(context,2)
+        }else{
+            binding.selectedRecyclerView.layoutManager = LinearLayoutManager(context)
+        }
 
         vm.selectedCitiesListLD.observe(viewLifecycleOwner){
             if (it != null){
